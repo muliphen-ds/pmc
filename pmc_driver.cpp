@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
         // print_max_clique(C);
 
         if (C.size() < in.param_ub)
-            // cout << "Clique of size " << in.param_ub << " does not exist." <<endl;
+            cout << "Clique of size " << in.param_ub << " does not exist." <<endl;
     }
     C.clear();
     return 0;
