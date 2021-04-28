@@ -69,32 +69,32 @@ string memory_usage() {
 }
 
 void indent(int level, string str) {
-    for (int i = 0; i < level; i++)
-        cout << "   ";
-    cout << "(" << level << ") ";
+    // for (int i = 0; i < level; i++)
+    //     cout << "   ";
+    // cout << "(" << level << ") ";
 }
 
 void print_max_clique(vector<int>& C) {
-    cout << "Maximum clique: ";
-    for(int i = 0; i < C.size(); i++)
-        cout << C[i] + 1 << " ";
-    cout << endl;
+    // cout << "Maximum clique: ";
+    // for(int i = 0; i < C.size(); i++)
+    //     cout << C[i] + 1 << " ";
+    // cout << endl;
 }
 
 void print_n_maxcliques(set< vector<int> > C, int n) {
-    set< vector<int> >::iterator it;
-    int mc = 0;
-    for( it = C.begin(); it != C.end(); it++) {
-        if (mc < n) {
-            cout << "Maximum clique: ";
-            const vector<int>& clq = (*it);
-            for (int j = 0; j < clq.size(); j++)
-                cout << clq[j] << " ";
-            cout <<endl;
-            ++mc;
-        }
-        else break;
-    }
+    // set< vector<int> >::iterator it;
+    // int mc = 0;
+    // for( it = C.begin(); it != C.end(); it++) {
+    //     if (mc < n) {
+    //         cout << "Maximum clique: ";
+    //         const vector<int>& clq = (*it);
+    //         for (int j = 0; j < clq.size(); j++)
+    //             cout << clq[j] << " ";
+    //         cout <<endl;
+    //         ++mc;
+    //     }
+    //     else break;
+    // }
 }
 
 

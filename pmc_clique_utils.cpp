@@ -31,12 +31,12 @@ int pmc_graph::initial_pruning(pmc_graph& G, int* &pruned, int lb) {
     }
 
     double sec = get_time();
-    cout << "[pmc: initial k-core pruning]  before pruning: |V| = " << G.num_vertices();
-    cout << ", |E| = " << G.num_edges() <<endl;
+    // cout << "[pmc: initial k-core pruning]  before pruning: |V| = " << G.num_vertices();
+    // cout << ", |E| = " << G.num_edges() <<endl;
     G.reduce_graph(pruned);
-    cout << "[pmc: initial k-core pruning]  after pruning:  |V| = " << G.num_vertices() - lb_idx;
-    cout << ", |E| = " << G.num_edges() <<endl;
-    cout << "[pmc]  initial pruning took " << get_time()-sec << " sec" <<endl;
+    // cout << "[pmc: initial k-core pruning]  after pruning:  |V| = " << G.num_vertices() - lb_idx;
+    // cout << ", |E| = " << G.num_edges() <<endl;
+    // cout << "[pmc]  initial pruning took " << get_time()-sec << " sec" <<endl;
 
     G.update_degrees();
     G.degree_bucket_sort(true); // largest to smallest degree
@@ -59,10 +59,10 @@ int pmc_graph::initial_pruning(pmc_graph& G, int* &pruned, int lb, vector<vector
     }
 
     double sec = get_time();
-    cout << "[pmc: initial k-core pruning]  before pruning: |V| = " << G.num_vertices() << ", |E| = " << G.num_edges() <<endl;
+    // cout << "[pmc: initial k-core pruning]  before pruning: |V| = " << G.num_vertices() << ", |E| = " << G.num_edges() <<endl;
     G.reduce_graph(pruned);
-    cout << "[pmc: initial k-core pruning]  after pruning:  |V| = " << G.num_vertices() - lb_idx << ", |E| = " << G.num_edges() <<endl;
-    cout << "[pmc]  initial pruning took " << get_time()-sec << " sec" <<endl;
+    // cout << "[pmc: initial k-core pruning]  after pruning:  |V| = " << G.num_vertices() - lb_idx << ", |E| = " << G.num_edges() <<endl;
+    // cout << "[pmc]  initial pruning took " << get_time()-sec << " sec" <<endl;
 
     G.update_degrees();
     G.degree_bucket_sort(true);
@@ -153,7 +153,7 @@ void pmc_graph::reduce_graph(
     // compute k-cores and share bounds: ensure operation completed by single process
     #pragma omp single nowait
     {
-        cout << ">>> [pmc: thread " << omp_get_thread_num() + 1 << "]" <<endl;
+        // cout << ">>> [pmc: thread " << omp_get_thread_num() + 1 << "]" <<endl;
         G.induced_cores_ordering(vs,es,pruned);
     }
     V.clear();
@@ -162,22 +162,22 @@ void pmc_graph::reduce_graph(
 
 
 void pmc_graph::print_info(vector<int> &C_max, double &sec) {
-    cout << "*** [pmc: thread " << omp_get_thread_num() + 1;
-    cout << "]   current max clique = " << C_max.size();
-    cout << ",  time = " << get_time() - sec << " sec" <<endl;
+    // cout << "*** [pmc: thread " << omp_get_thread_num() + 1;
+    // cout << "]   current max clique = " << C_max.size();
+    // cout << ",  time = " << get_time() - sec << " sec" <<endl;
 }
 
 
 void pmc_graph::print_break() {
-    cout << "-----------------------------------------------------------------------" <<endl;
+    // cout << "-----------------------------------------------------------------------" <<endl;
 }
 
 bool pmc_graph::time_left(vector<int> &C_max, double sec, double time_limit, bool &time_expired_msg) {
     if ((get_time() - sec) > time_limit) {
         if (time_expired_msg) {
-            cout << "\n### Time limit expired, terminating search. ###" <<endl;
-            cout << "Size: " << C_max.size() <<endl;
-            print_max_clique(C_max);
+            // cout << "\n### Time limit expired, terminating search. ###" <<endl;
+            // cout << "Size: " << C_max.size() <<endl;
+            // print_max_clique(C_max);
             time_expired_msg = false;
         }
         return false;
@@ -186,16 +186,16 @@ bool pmc_graph::time_left(vector<int> &C_max, double sec, double time_limit, boo
 }
 
 void pmc_graph::graph_stats(pmc_graph& G, int& mc, int id, double &sec) {
-    cout << "[pmc: bounds updated - thread " << omp_get_thread_num() + 1 << "]  ";
-    cout << "time = " << get_time() - sec << " sec, ";
-    cout << "|V| = " << (G.num_vertices() - id);
-    cout << " (" << id << " / " << G.num_vertices();
-    cout << "), |E| = " << G.num_edges();
-    cout << ", w = " << mc;
-    cout << ", p = " << G.density();
-    cout << ", d_min = " << G.get_min_degree();
-    cout << ", d_avg = " << G.get_avg_degree();
-    cout << ", d_max = " << G.get_max_degree();
-    cout << ", k_max = " << G.get_max_core();
-    cout <<endl;
+    // cout << "[pmc: bounds updated - thread " << omp_get_thread_num() + 1 << "]  ";
+    // cout << "time = " << get_time() - sec << " sec, ";
+    // cout << "|V| = " << (G.num_vertices() - id);
+    // cout << " (" << id << " / " << G.num_vertices();
+    // cout << "), |E| = " << G.num_edges();
+    // cout << ", w = " << mc;
+    // cout << ", p = " << G.density();
+    // cout << ", d_min = " << G.get_min_degree();
+    // cout << ", d_avg = " << G.get_avg_degree();
+    // cout << ", d_max = " << G.get_max_degree();
+    // cout << ", k_max = " << G.get_max_core();
+    // cout <<endl;
 }

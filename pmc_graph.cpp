@@ -66,19 +66,19 @@ void pmc_graph::read_graph(const string& filename) {
     else if (ext == "gr")
         read_metis(filename);
     else {
-        cout << "Unsupported graph format." <<endl;
+        // cout << "Unsupported graph format." <<endl;
         return;
     }
     basic_stats(sec);
 }
 
 void pmc_graph::basic_stats(double sec) {
-    cout << "Reading time " << get_time() - sec << endl;
-    cout << "|V|: " << num_vertices() <<endl;
-    cout << "|E|: " << num_edges() <<endl;
-    cout << "p: " << density() <<endl;
-    cout << "d_max: " << get_max_degree() <<endl;
-    cout << "d_avg: " << get_avg_degree() <<endl;
+    // cout << "Reading time " << get_time() - sec << endl;
+    // cout << "|V|: " << num_vertices() <<endl;
+    // cout << "|E|: " << num_edges() <<endl;
+    // cout << "p: " << density() <<endl;
+    // cout << "d_max: " << get_max_degree() <<endl;
+    // cout << "d_avg: " << get_avg_degree() <<endl;
 }
 
 
@@ -135,7 +135,7 @@ void pmc_graph::read_edges(const string& filename) {
     }
     vert_list.clear();
     vertex_degrees();
-    cout << "self-loops: " << self_edges <<endl;
+    // cout << "self-loops: " << self_edges <<endl;
 }
 
 pmc_graph::pmc_graph(long long nedges, const int *ei, const int *ej, int offset) {
@@ -282,7 +282,7 @@ void pmc_graph::create_adj() {
         for (long long j = vertices[i]; j < vertices[i + 1]; j++ )
             adj[i][edges[j]] = true;
     }
-    cout << "Created adjacency matrix in " << get_time() - sec << " seconds" <<endl;
+    // cout << "Created adjacency matrix in " << get_time() - sec << " seconds" <<endl;
 }
 
 
@@ -294,7 +294,7 @@ void pmc_graph::sum_vertex_degrees() {
         degree[v] = vertices[v+1] - vertices[v];
         sum += (degree[v] * degree[v]-1) / 2;
     }
-    cout << "sum of degrees: " << sum <<endl;
+    // cout << "sum of degrees: " << sum <<endl;
 }
 
 void pmc_graph::vertex_degrees() {
@@ -355,7 +355,7 @@ void pmc_graph::update_degrees(int* &pruned, int& mc) {
         }
     }
     avg_degree = (double)edges.size() / p;
-    cout << ", pruned: " << p << endl;
+    // cout << ", pruned: " << p << endl;
 }
 
 
@@ -427,7 +427,7 @@ void pmc_graph::update_kcores(int* &pruned) {
         }
         else kcore[v] = 0;
     }
-    cout << "[pmc: updated cores]  K: " << max_core <<endl;
+    // cout << "[pmc: updated cores]  K: " << max_core <<endl;
 
     bin.clear();
     pos_tmp.clear();
@@ -500,16 +500,16 @@ void pmc_graph::reduce_graph(
 
 
 void pmc_graph::bound_stats(int alg, int lb, pmc_graph& G) {
-    cout << "graph: " << fn <<endl;
-    cout << "alg: " << alg <<endl;
-    cout << "-------------------------------" <<endl;
-    cout << "Graph Stats for Max-Clique:" <<endl;
-    cout << "-------------------------------" <<endl;
-    cout << "|V|: " << num_vertices() <<endl;
-    cout << "|E|: " << num_edges() <<endl;
-    cout << "d_max: " << get_max_degree() <<endl;
-    cout << "d_avg: " << get_avg_degree() <<endl;
-    cout << "p: " << density() <<endl;
+    // cout << "graph: " << fn <<endl;
+    // cout << "alg: " << alg <<endl;
+    // cout << "-------------------------------" <<endl;
+    // cout << "Graph Stats for Max-Clique:" <<endl;
+    // cout << "-------------------------------" <<endl;
+    // cout << "|V|: " << num_vertices() <<endl;
+    // cout << "|E|: " << num_edges() <<endl;
+    // cout << "d_max: " << get_max_degree() <<endl;
+    // cout << "d_avg: " << get_avg_degree() <<endl;
+    // cout << "p: " << density() <<endl;
 }
 
 
@@ -608,8 +608,8 @@ void pmc_graph::degree_bucket_sort(bool desc) {
         }
     }
 
-    cout << "[pmc: sorting neighbors]  |E| = " << edges.size();
-    cout << ", |E_sorted| = " << tmp_edges.size() <<endl;
+    // cout << "[pmc: sorting neighbors]  |E| = " << edges.size();
+    // cout << ", |E_sorted| = " << tmp_edges.size() <<endl;
     edges = tmp_edges;
 }
 

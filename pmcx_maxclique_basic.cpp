@@ -51,7 +51,7 @@ int pmcx_maxclique_basic::search(pmc_graph& G, vector<int>& sol) {
     vector<Vertex> V;
     V.reserve(G.num_vertices());
     G.order_vertices(V,G,lb_idx,lb,vertex_ordering,decr_order);
-    cout << "|V| = " << V.size() <<endl;
+    // cout << "|V| = " << V.size() <<endl;
 
     vector<short> ind(G.num_vertices(),0);
     vector<int> es = G.get_edges_array();
@@ -147,10 +147,10 @@ void pmcx_maxclique_basic::branch(
                         // ensure updated max is flushed
                         mc = C.size();
                         C_max = C;
-                        print_mc_info(C,sec);
+                        // print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
-                            cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
+                            // cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
                         }
                     }
 
@@ -208,7 +208,7 @@ int pmcx_maxclique_basic::search_dense(pmc_graph& G, vector<int>& sol) {
     vector<Vertex> V;
     V.reserve(G.num_vertices());
     G.order_vertices(V,G,lb_idx,lb,vertex_ordering,decr_order);
-    cout << "|V| = " << V.size() <<endl;
+    // cout << "|V| = " << V.size() <<endl;
 
     vector<short> ind(G.num_vertices(),0);
     vector<int> es = G.get_edges_array();
@@ -303,10 +303,10 @@ void pmcx_maxclique_basic::branch_dense(
                         // ensure updated max is flushed
                         mc = C.size();
                         C_max = C;
-                        print_mc_info(C,sec);
+                        // print_mc_info(C,sec);
                         if (mc >= param_ub) {
                             not_reached_ub = false;
-                            cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
+                            // cout << "[pmc: upper bound reached]  omega = " << mc <<endl;
                         }
                     }
 
